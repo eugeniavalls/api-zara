@@ -32,8 +32,8 @@ app.use(express.urlencoded({extended: false}))
 app.get('/', async (req, res, next)=>{
     // Aqui flatarian los middleware router etc
     const buscar = await Usuario.find()
-    // res.json(buscar)
-    res.json(JSON.stringify({URL_ATLAS}))
+    res.json(buscar)
+    
 })
 
 app.post('/', async (req, res, next) => {
