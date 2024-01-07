@@ -8,6 +8,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 
 let URL_ATLAS = process.env.URL_ATLAS || 'mongodb://127.0.0.1:27017/zarapp'
+// let URL_ATLAS = process.env.URL_ATLAS || 'mongodb+srv://evallsalfaro:Xativa2900@cluster0.ofcxycz.mongodb.net/zarapp'
 
 const app = express()
 
@@ -31,7 +32,8 @@ app.use(express.urlencoded({extended: false}))
 app.get('/', async (req, res, next)=>{
     // Aqui flatarian los middleware router etc
     const buscar = await Usuario.find()
-    res.json(buscar)
+    // res.json(buscar)
+    res.json(JSON.stringify({URL_ATLAS}))
 })
 
 app.post('/', async (req, res, next) => {
