@@ -1,4 +1,4 @@
-const { Usuario , Slider } = require('./schemas/schemas')
+const { Usuario , Slider, Prenda } = require('./schemas/schemas')
 
 //Inicio de sesion
 const getUsuario = (req, res, next) => {
@@ -39,11 +39,26 @@ const getSlider = (req, res, next) => {
     } catch (error) {
         next(error)
     }
-    
+}
+
+//Rebajas
+const getPrendas = (req, res, next) => {
+    try {
+        if (Prenda) {
+            const buscar = Prenda.find()
+            res.json(buscar)
+        } else {
+            res.status(200).json('No existe esta prenda')
+        }
+    } catch (error) {
+        next(error)
+    }
+
 }
 
 module.exports = {
     getUsuario,
     postUsuario,
-    getSlider
+    getSlider, 
+    getPrendas
 }

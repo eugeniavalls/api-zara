@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(router)
 
 app.use((req, res, next) => {
-    next({ status: 404, message: 'El usuario no existe' })
+    next({ status: 404, message: 'Error' })
 })
 
 app.use((error, req, res, next) => {

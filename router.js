@@ -1,5 +1,5 @@
 const express = require('express')
-const { getUsuario, postUsuario, getSlider,   } = require('./controllers')
+const { getUsuario, postUsuario, getSlider, getPrendas } = require('./controllers')
 
 const router = express.Router()
 
@@ -9,6 +9,10 @@ router.route('/')
 
 router.route('/gestor')
     .get(getSlider)
+
+router.route('/rebajas')
+    .get(getPrendas)
+
 
 
 module.exports = {

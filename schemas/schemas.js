@@ -22,8 +22,28 @@ const mongoose = require('mongoose')
     //Modelo para slider de la home
     const Slider = mongoose.model('Slider', sliderSchema)
 
+//Prendas
+
+    //Schema para prendas
+    const prendasSchema = new mongoose.Schema(
+        {   src: String, 
+            alt: String,
+            prendaName: String,
+            prendaPriceActual: String,
+            prendaPriceDisccount: String,
+            prendaPriceLast: String,
+            prendaPriceOld: String,
+        
+        },
+        { collection: 'prendas' }
+    )
+
+    //Modelo para prendas
+    const Prenda = mongoose.model('Prenda', prendasSchema)
+
 
 module.exports = {
     Usuario,
-    Slider
+    Slider,
+    Prenda
 }
