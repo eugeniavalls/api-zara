@@ -15,10 +15,10 @@ const getUsuario = (req, res, next) => {
 
 }
 
-const postUsuario = (req, res, next) => {
+const postUsuario = async (req, res, next) => {
     try {
         const { nombre, pass } = req.body
-        const buscar = Usuario.findOne({
+        const buscar = await Usuario.findOne({
             nombre, pass
         })
         res.status(201).json(buscar)
@@ -28,27 +28,28 @@ const postUsuario = (req, res, next) => {
 }
 
 //SLider home
-const getSlider = (req, res, next) => {
+const getSlider = async (req, res, next) => {
     try {
-        if(Slider) {
-            const buscarSlider = Slider.find()
-            res.json(buscarSlider)
-        } else {
-            res.status(200).json('No se pueden visualizar las imágenes')
-        }
+        
+        const buscarSlider = await Slider.find()
+        res.json(buscarSlider)
+        
     } catch (error) {
         next(error)
     }
+
 }
 
 //Rebajas
-const getPrendas = (req, res, next) => {
+const getPrendas = async (req, res, next) => {
     try {
-        if (Prenda) {
-            const buscar = Prenda.find()
+        
+            const buscar = await Prenda.find()
+            if (!buscar){
+                res.status(200).json('No existe esta prenda')
+            } else{
             res.json(buscar)
-        } else {
-            res.status(200).json('No existe esta prenda')
+
         }
     } catch (error) {
         next(error)
