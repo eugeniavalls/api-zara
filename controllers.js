@@ -1,4 +1,4 @@
-const { Usuario , Slider, Prenda } = require('./schemas/schemas')
+const { Usuario , Slider, Prenda, Wishlist } = require('./schemas/schemas')
 
 //Inicio de sesion
 const getUsuario = (req, res, next) => {
@@ -57,9 +57,43 @@ const getPrendas = async (req, res, next) => {
 
 }
 
+//Wishlist 
+const getWishlist = async (req, res, next) => {
+    // try {
+    //     const wishlistItems = await Wishlist.find()
+    //     res.json(wishlistItems)
+    // } catch (error) {
+    //     next(error)
+    // }
+    try {
+        const buscar = await Prenda.find()
+        if (!buscar){
+            res.status(200).json('No existe esta prenda')
+        } else{
+        res.json(buscar)
+    }
+} catch (error) {
+    next(error)
+}
+}
+
+const saveToWishlist = async (req, res, next) => {
+    try {
+        const {src, alt, prendaName, prendaPriceActual, prendaPriceDisccount, prendaPriceLast, prendaPriceOld} = req.body
+        const savedItem = await Wishlist.create({
+            src, alt, prendaName, prendaPriceActual, prendaPriceDisccount, prendaPriceLast, prendaPriceOld
+        })
+        res.status(201).json(savedItem)
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     getUsuario,
     postUsuario,
     getSlider, 
-    getPrendas
+    getPrendas, 
+    getWishlist,
+    saveToWishlist
 }

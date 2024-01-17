@@ -41,9 +41,21 @@ const mongoose = require('mongoose')
     //Modelo para prendas
     const Prenda = mongoose.model('Prenda', prendasSchema)
 
+//Wishlist
+
+    //Schema para prendas
+    const wishlistSchema = new mongoose.Schema(
+        { },
+        { collection: 'wishlist' }
+    )
+
+    //Modelo para prendas
+    const Wishlist = mongoose.model('Wishlist', wishlistSchema)
+
 
 module.exports = {
     Usuario,
     Slider,
-    Prenda
+    Prenda,
+    Wishlist
 }
