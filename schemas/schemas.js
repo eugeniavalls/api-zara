@@ -45,7 +45,13 @@ const mongoose = require('mongoose')
 
     //Schema para prendas
     const wishlistSchema = new mongoose.Schema(
-        { },
+        {src: String, 
+            alt: String,
+            prendaName: String,
+            prendaPriceActual: String,
+            prendaPriceDisccount: String,
+            prendaPriceLast: String,
+            prendaPriceOld: String, },
         { collection: 'wishlist' }
     )
 

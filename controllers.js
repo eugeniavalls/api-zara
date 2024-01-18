@@ -66,7 +66,7 @@ const getWishlist = async (req, res, next) => {
     //     next(error)
     // }
     try {
-        const buscar = await Prenda.find()
+        const buscar = await Wishlist.find()
         if (!buscar){
             res.status(200).json('No existe esta prenda')
         } else{
