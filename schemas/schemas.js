@@ -33,6 +33,7 @@ const mongoose = require('mongoose')
             prendaPriceDisccount: String,
             prendaPriceLast: String,
             prendaPriceOld: String,
+            talla: String
         
         },
         { collection: 'prendas' }
@@ -51,7 +52,9 @@ const mongoose = require('mongoose')
             prendaPriceActual: String,
             prendaPriceDisccount: String,
             prendaPriceLast: String,
-            prendaPriceOld: String, },
+            prendaPriceOld: String,
+            talla: String
+         },
         { collection: 'wishlist' }
     )
 

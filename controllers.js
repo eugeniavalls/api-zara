@@ -59,12 +59,6 @@ const getPrendas = async (req, res, next) => {
 
 //Wishlist 
 const getWishlist = async (req, res, next) => {
-    // try {
-    //     const wishlistItems = await Wishlist.find()
-    //     res.json(wishlistItems)
-    // } catch (error) {
-    //     next(error)
-    // }
     try {
         const buscar = await Wishlist.find()
         if (!buscar){
@@ -79,13 +73,43 @@ const getWishlist = async (req, res, next) => {
 
 const saveToWishlist = async (req, res, next) => {
     try {
-        const {src, alt, prendaName, prendaPriceActual, prendaPriceDisccount, prendaPriceLast, prendaPriceOld} = req.body
+        const {src, alt, prendaName, prendaPriceActual, prendaPriceDisccount, prendaPriceLast, prendaPriceOld, talla} = req.body
         const savedItem = await Wishlist.create({
-            src, alt, prendaName, prendaPriceActual, prendaPriceDisccount, prendaPriceLast, prendaPriceOld
+            src, alt, prendaName, prendaPriceActual, prendaPriceDisccount, prendaPriceLast, prendaPriceOld, talla
         })
         res.status(201).json(savedItem)
     } catch (error) {
         next(error)
+    }
+}
+
+//Eliminar prenda
+const deleteWishlist = async (req, res, next) => {
+    try {
+        const {id} = req.params
+
+        await Wishlist.findByIdAndDelete(id)
+        const eliminar = await Wishlist.find()
+        res.status(200).json(eliminar)
+    } catch (error) {
+        next(error)
+    }
+}
+
+//Actualizar prenda
+const updateTalla = async (req, res, next) => {
+    try {
+        const {id} = req.params
+        const {talla} = req.body
+
+        const updateItem = await Wishlist.findByIdAndUpdate(id, {talla}, {new: true})
+
+        if(!updateItem){
+            return res.status(404).json('Elemento de wishlist no encontrado')
+        }
+        res.status(200).json(updateItem)
+    } catch (error) {
+        
     }
 }
 
@@ -95,5 +119,7 @@ module.exports = {
     getSlider, 
     getPrendas, 
     getWishlist,
-    saveToWishlist
+    saveToWishlist, 
+    deleteWishlist, 
+    updateTalla
 }
