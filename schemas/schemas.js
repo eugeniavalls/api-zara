@@ -1,30 +1,61 @@
 const mongoose = require('mongoose')
 
-//Inicio de sesion
+/*--------------------------- *\
+ * Modelo de inicio de sesión 
+ *  
+ * Este modelo define la estrucutura y comportamiento de los registros o intentos de sesión del usuario en la base de datos
+ *
+ * @model Usuario
+ * @property {string} nombre - Nombre de usuario
+ * @property {string} pass - Contraseña de usuario
+ *--------------------------- */
 
-    //Schema para inicio de sesion
     const usuarioSchema = new mongoose.Schema(
-        { nombre: String, pass: String },
+        { 
+            nombre: String, 
+            pass: String 
+        },
         { collection: 'usuarios' }
     )
 
-    //Modelo para inicio de sesion
     const Usuario = mongoose.model('Usuario', usuarioSchema)
 
-//Slider home
+/*--------------------------- *\
+ * Modelo del Slider de /gestor 
+ *  
+ * Este modelo define la estrucutura y comportamiento de las imágenes y el cambio de estas (al hacer scroll) en la base de datos
+ *
+ * @model Slider
+ * @property {string} src - Ruta de la imagen
+ * @property {string} alt - Texto alternativo
+ *--------------------------- */
 
-    //Schema para slider de la home 
     const sliderSchema = new mongoose.Schema(
-        { src : String , alt : String},
+        { 
+            src : String , 
+            alt : String
+        },
         {collection: 'slider'}
     )
 
-    //Modelo para slider de la home
     const Slider = mongoose.model('Slider', sliderSchema)
 
-//Prendas
+/*--------------------------- *\
+ * Modelo de las prendas
+ *  
+ * Este modelo define la estrucutura y comportamiento de las prendas en la base de datos
+ *
+ * @model Prenda
+ * @property {string} src - Ruta de la imagen
+ * @property {string} alt - Texto alternativo
+ * @property {string} prendaName - Nombre de la prenda
+ * @property {string} prendaPriceActual - Precio actual de la prenda 
+ * @property {string} prendaPriceDisccount - Precio de la prenda con descuento
+ * @property {string} prendaPriceLast - Precio último de la prenda
+ * @property {string} prendaPriceOld - Precio antiguo de la prenda
+ * @property {string} talla - talla de la prenda
+ *--------------------------- */
 
-    //Schema para prendas
     const prendasSchema = new mongoose.Schema(
         {   src: String, 
             alt: String,
@@ -34,17 +65,28 @@ const mongoose = require('mongoose')
             prendaPriceLast: String,
             prendaPriceOld: String,
             talla: String
-        
         },
         { collection: 'prendas' }
     )
 
-    //Modelo para prendas
     const Prenda = mongoose.model('Prenda', prendasSchema)
 
-//Wishlist
+/*--------------------------- *\
+ * Modelo de la wishlist
+ *  
+ * Este modelo define la estrucutura y comportamiento de las prendas dentro de la wishlist en la base de datos
+ *
+ * @model Wishlist
+ * @property {string} src - Ruta de la imagen
+ * @property {string} alt - Texto alternativo
+ * @property {string} prendaName - Nombre de la prenda
+ * @property {string} prendaPriceActual - Precio actual de la prenda 
+ * @property {string} prendaPriceDisccount - Precio de la prenda con descuento
+ * @property {string} prendaPriceLast - Precio último de la prenda
+ * @property {string} prendaPriceOld - Precio antiguo de la prenda
+ * @property {string} talla - talla de la prenda
+ *--------------------------- */
 
-    //Schema para prendas
     const wishlistSchema = new mongoose.Schema(
         {src: String, 
             alt: String,
@@ -58,7 +100,6 @@ const mongoose = require('mongoose')
         { collection: 'wishlist' }
     )
 
-    //Modelo para prendas
     const Wishlist = mongoose.model('Wishlist', wishlistSchema)
 
 

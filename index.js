@@ -1,3 +1,28 @@
+/*--------------------------- *\
+ * index.js
+ *  Interacciones: 
+ *     - Cargar datos de una API
+ *  Datos: 
+ *     - API fetch a VITE_URL_API en local (http://localhost:3000/)
+ *     - API fetch a VITE_URL_API en produccion (VITE_URL_API="https://api-zara.vercel.app/")
+ *  Estrcutura: 
+ *     - Constantes
+ *     - Variables
+ *     - Funciones
+ * 
+ * Express API
+ * Conectamos con la base de datos de zarapp para devolver la información
+ * 
+ * @middlewares {cors, nodemon}
+ * @routing {Express Router}
+ * @odm {mongoose}
+ * @endpoint {/} [get, post]
+ * @endpoint {/gestor} [get]
+ * @endpoint {/rebajas} [get]
+ * @endpoint {/wishlist} [get, post]
+ * @endpoint {/wishlist/:id} [delete, put]
+ *--------------------------- */
+
 console.clear()
 
 const mongoose = require('mongoose')
